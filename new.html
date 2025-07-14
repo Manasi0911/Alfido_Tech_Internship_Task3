@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Background Color Changer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      text-align: center;
+      padding-top: 50px;
+      font-family: Arial, sans-serif;
+      transition: background-color 0.5s ease;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #changeColorBtn {
+      padding: 12px 28px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    #changeColorBtn:hover {
+      background-color: #0056b3;
+    }
+
+    #colorCode {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #333;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🎨 Background Color Changer</h1>
+    <p>Click the button below to change the background color randomly.</p>
+    <button id="changeColorBtn">Change Background</button>
+    <div id="colorCode">Current Color: #FFFFFF</div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    const button = document.getElementById('changeColorBtn');
+    const colorDisplay = document.getElementById('colorCode');
+
+    button.addEventListener('click', () => {
+      const randomColor = getRandomColor();
+      document.body.style.backgroundColor = randomColor;
+      colorDisplay.textContent = "Current Color:" + randomColor;
+    });
+  </script>
+
+</body>
+</html>
